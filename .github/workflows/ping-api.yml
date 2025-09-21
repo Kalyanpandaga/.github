@@ -12,4 +12,8 @@ jobs:
     steps:
       - name: Call Task Manager API
         run: |
-          curl -s -o /dev/null -w "%{http_code}\n" https://task-manager-op1d.onrender.com/api/users/me
+          echo "Pinging Task Manager API..."
+          curl -s -o /dev/null -w "Status: %{http_code}\n" https://task-manager-op1d.onrender.com/api/users/me
+          
+          echo "Pinging Customer Management App..."
+          curl -s -o /dev/null -w "Status: %{http_code}\n" https://customer-management-app-hysc.onrender.com/healthz
