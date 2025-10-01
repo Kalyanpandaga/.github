@@ -1,19 +1,1 @@
-name: Ping API every 5 minutes
 
-on:
-  schedule:
-    # Runs every 5 minutes
-    - cron: "*/5 * * * *"
-  workflow_dispatch: # allow manual trigger too
-
-jobs:
-  ping:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Call Task Manager API
-        run: |
-          echo "Pinging Task Manager API..."
-          curl -s -o /dev/null -w "Status: %{http_code}\n" https://task-manager-op1d.onrender.com/api/users/me
-          
-          echo "Pinging Customer Management App..."
-          curl -s -o /dev/null -w "Status: %{http_code}\n" https://customer-management-app-hysc.onrender.com/healthz
